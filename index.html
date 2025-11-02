@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Garage Builder Wizard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="wizard">
+      <header>
+        <h1>Garage Builder Wizard</h1>
+        <p class="subtitle">Choose materials, roof, color, and size step by step.</p>
+      </header>
+
+      <ol class="progress" id="progress-indicator" aria-label="Wizard steps">
+        <li class="progress-step is-active" data-step="1">Materials</li>
+        <li class="progress-step" data-step="2">Roof</li>
+        <li class="progress-step" data-step="3">Color</li>
+        <li class="progress-step" data-step="4">Size</li>
+        <li class="progress-step" data-step="5">Summary</li>
+      </ol>
+
+      <form id="garage-form" novalidate>
+        <section class="step is-active" data-step="1" aria-labelledby="materials-heading">
+          <h2 id="materials-heading">Choose materials</h2>
+          <p>Select the main materials for your garage.</p>
+          <fieldset>
+            <legend class="sr-only">Materials</legend>
+            <label>
+              <input type="checkbox" name="materials" value="Steel Frame" />
+              Steel Frame
+            </label>
+            <label>
+              <input type="checkbox" name="materials" value="Wood Framing" />
+              Wood Framing
+            </label>
+            <label>
+              <input type="checkbox" name="materials" value="Insulated Panels" />
+              Insulated Panels
+            </label>
+            <label>
+              <input type="checkbox" name="materials" value="Brick Veneer" />
+              Brick Veneer
+            </label>
+          </fieldset>
+        </section>
+
+        <section class="step" data-step="2" aria-labelledby="roof-heading">
+          <h2 id="roof-heading">Select roof style</h2>
+          <fieldset>
+            <legend class="sr-only">Roof style</legend>
+            <label>
+              <input type="radio" name="roof" value="Gable" required />
+              Gable Roof
+            </label>
+            <label>
+              <input type="radio" name="roof" value="Hip" />
+              Hip Roof
+            </label>
+            <label>
+              <input type="radio" name="roof" value="Flat" />
+              Flat Roof
+            </label>
+            <label>
+              <input type="radio" name="roof" value="Gambrel" />
+              Gambrel Roof
+            </label>
+          </fieldset>
+        </section>
+
+        <section class="step" data-step="3" aria-labelledby="color-heading">
+          <h2 id="color-heading">Pick exterior color</h2>
+          <fieldset>
+            <legend class="sr-only">Exterior color</legend>
+            <div class="color-options">
+              <label class="color-chip" style="--color: #3b82f6">
+                <input type="radio" name="color" value="Blue" required />
+                <span>Blue</span>
+              </label>
+              <label class="color-chip" style="--color: #d97706">
+                <input type="radio" name="color" value="Copper" />
+                <span>Copper</span>
+              </label>
+              <label class="color-chip" style="--color: #10b981">
+                <input type="radio" name="color" value="Green" />
+                <span>Green</span>
+              </label>
+              <label class="color-chip" style="--color: #f43f5e">
+                <input type="radio" name="color" value="Red" />
+                <span>Red</span>
+              </label>
+              <label class="color-chip" style="--color: #6b7280">
+                <input type="radio" name="color" value="Charcoal" />
+                <span>Charcoal</span>
+              </label>
+            </div>
+          </fieldset>
+        </section>
+
+        <section class="step" data-step="4" aria-labelledby="size-heading">
+          <h2 id="size-heading">Select size</h2>
+          <p>Enter approximate dimensions for the garage.</p>
+          <div class="size-grid">
+            <label>
+              Width (ft)
+              <input type="number" name="width" min="10" max="60" step="1" required placeholder="24" />
+            </label>
+            <label>
+              Length (ft)
+              <input type="number" name="length" min="10" max="80" step="1" required placeholder="30" />
+            </label>
+            <label>
+              Height (ft)
+              <input type="number" name="height" min="8" max="20" step="1" required placeholder="12" />
+            </label>
+          </div>
+        </section>
+
+        <section class="step" data-step="5" aria-labelledby="summary-heading">
+          <h2 id="summary-heading">Summary</h2>
+          <dl class="summary" id="summary">
+            <div>
+              <dt>Materials</dt>
+              <dd id="summary-materials">&mdash;</dd>
+            </div>
+            <div>
+              <dt>Roof</dt>
+              <dd id="summary-roof">&mdash;</dd>
+            </div>
+            <div>
+              <dt>Color</dt>
+              <dd id="summary-color">&mdash;</dd>
+            </div>
+            <div>
+              <dt>Size</dt>
+              <dd id="summary-size">&mdash;</dd>
+            </div>
+          </dl>
+          <p class="summary-note">Review your selections before submitting.</p>
+          <button type="submit" class="primary">Submit design</button>
+          <p class="confirmation" id="confirmation" role="status" aria-live="polite"></p>
+        </section>
+      </form>
+
+      <footer class="controls">
+        <button type="button" class="secondary" id="prev-btn">Previous</button>
+        <button type="button" class="primary" id="next-btn">Next</button>
+      </footer>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
